@@ -59,16 +59,17 @@ It uses `.append()` instead of `.load()`, so inline scripts will be executed.
 
 ### Responsive grid system
 
-By default, Pure.css' grid system is included.  If you happen to not need grid capabilities,
-you can save up to 8KB by setting `grids` to `false` in your site-level configuration.
+By default, Pure.css' responsive grid system is included.  If you happen to not need grid
+capabilities, you can save up to 8KB by setting `grids` to `false` in your site-level
+configuration.
 
 ### Localizations
 
 In case l11n was your kind of thing.  With the [Dynamic MOTD plugin][pl-motd] or similar, you
-can send scoreboards in a user's preferred language.  Follow along with [creating a
+can send chalkboard in a user's preferred language.  Follow along with [creating a
 multilingual site][hugo-ml] if you plan on doing so.
 
-Or you can just have the scoreboard localized for your region.  Not everyone can be a polyglot.
+Or you can just have the chalkboard localized for your region.  Not everyone can be a polyglot.
 
 Currently supported locales:
 
