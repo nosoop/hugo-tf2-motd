@@ -1,0 +1,27 @@
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	{{ if (isset .Site.Params "purecss_ref") }}
+	<link rel="stylesheet" href="{{ index .Site.Params "purecss_ref"}}">
+	{{ else }}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.1/pure-min.css" integrity="sha384-CCTZv2q9I9m3UOxRLaJneXrrqKwUNOzZ6NGEUMwHtShDJ+nCoiXJCAgi05KfkLGY" crossorigin="anonymous">
+	{{ end }}
+	<link rel="stylesheet" type="text/css" href="/css/motd.css">
+	
+	{{ if (or (not (isset .Site.Params "grids")) (index .Site.Params "grids")) }}
+	<!-- ffs -->
+	{{ "<!--[if lte IE 8]>" | safeHTML }}
+		<link rel="stylesheet" href="{{ default "https://unpkg.com/purecss@0.6.1/build/grids-responsive-old-ie-min.css" (index .Site.Params "purecss_oldgrids_ref") }}">
+	{{ "<![endif]-->" | safeHTML }}
+	{{ "<!--[if gt IE 8]><!-->" | safeHTML }}
+		<link rel="stylesheet" href="{{ default "https://cdnjs.cloudflare.com/ajax/libs/pure/0.6.1/grids-responsive-min.css" (index .Site.Params "purecss_grids_ref") }}">
+	{{ "<!--<![endif]-->" | safeHTML }}
+	{{ end }}
+	
+	{{ if (isset .Site.Params "jquery_ref") }}
+	<script src="{{ index .Site.Params "jquery_ref" }}"></script>
+	{{ else }}
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+	{{ end }}
+</head>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/motd.css">
+	
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	
+	<!-- hack to redirect to first page -->
+	{{ range first 1 .Data.Pages.ByTitle }}
+	<title>{{ .URL }}</title>
+	<link rel="canonical" href="{{ .URL }}"/>
+	<meta http-equiv="refresh" content="0; url={{ .URL }}" />
+	{{ end }}
+</head>
+</html>

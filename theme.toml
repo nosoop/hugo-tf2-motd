@@ -1,0 +1,15 @@
+# theme.toml template for a Hugo theme
+# See https://github.com/spf13/hugoThemes#themetoml for an example
+
+name = "Team Fortress 2 MOTD"
+license = "MIT"
+licenselink = "https://github.com/nosoop/hugo-tf2-motd"
+description = "A Hugo theme for Team Fortress 2 MOTDs."
+homepage = "https://github.com/nosoop/hugo-tf2-motd"
+tags = ["gaming", "message of the day", "motd", "tf2", "team fortress 2"]
+features = ["single page content", "scaling layout", ]
+min_version = 0.17
+
+[author]
+  name = "nosoop"
+  homepage = "https://csrd.science/"

@@ -1,0 +1,146 @@
+@font-face {
+	font-family: 'tf2-professor';
+	src: url(/font/tf2professor.ttf);
+}
+
+html { 	
+	width: 100%;
+	height: 100%;	
+	background:url(/img/blackboard.jpg);
+	background-size: 100% 100%;
+	overflow: hidden;
+	display: compact;
+	margin: 0px;
+	padding: 0px;
+}
+
+body {
+	color: #CCC;
+	background-color: rgba(0, 0, 0, 0);
+	font-family: 'tf2-professor';
+	font-size: 32px;
+	font-size: 6.4vmin;
+	padding: 0px;
+	line-height: normal;
+	
+	margin-top: 0px;
+}
+
+.container {
+	max-width: 1170px;
+	margin: auto;
+	/* margin-right: 6.5%; */
+}
+
+.pure-g [class*="pure-u"] {
+	font-family: 'tf2-professor';
+}
+
+h1 {
+	font-size: 48px;
+	font-size: 9.6vmin;
+	margin: 0px 0px;
+	font-weight: 500;
+}
+
+h1, .title {
+	color: #EEE;
+}
+
+ul {
+	margin-top: 0.25em;
+}
+
+.center-block {
+	display: block;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.text-center {
+	text-align: center;
+}
+
+#motd-image {
+	max-height: 40vh;
+}
+
+.page-arrow {
+	height: 4.0vmin;
+	vertical-align: text-bottom;
+	cursor: pointer;
+}
+
+p {
+	margin-top: 10px;
+	margin-bottom: 0;
+}
+
+.page-indicator {
+	font-size: 36px;
+	font-size: 6.4vmin;
+	margin: 2.0vmin 2.0vmin;
+}
+
+.nav-disabled {
+	opacity: 0.1;
+}
+
+#motd-buttons {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+#motd-buttons a {
+	text-decoration: none;
+}
+
+/* Sourced from "Align Lists Flush Left" -- https://j.eremy.net/align-lists-flush-left/ */
+ul {
+	display: table;
+	margin-left: 0;
+	padding-left: 0;
+	list-style: none;
+}
+li:before {
+	content: "-  ";
+	display: table-cell;
+	padding-right: 0.4em;
+}
+li {
+	display: table-row;
+	margin-left: -0.5em;
+}
+
+li > strong {
+	color: #EEE;
+}
+
+/* sticky footer implementation */
+
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	/* Margin bottom by footer height */
+	margin-bottom: 96px;
+	margin-bottom: 13.2vh;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 96px;
+	height: 13.2vh;
+}
+
+#main-content {
+	/* subtract height of footer from 100% */
+	overflow-y: auto;
+	max-height: 86.8vh;
+}
