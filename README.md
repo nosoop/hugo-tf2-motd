@@ -4,13 +4,12 @@ A [Hugo][hugo] theme to be used in generating message of the day pages for Team 
 Supports inline page transitions, scrolling overflow (default scrollbar), and scaling
 layouts.
 
-Leverages the [pure.css framework][pure.css] and jQuery.
+Uses modern HTML5 and JavaScript.  No library dependencies.
 
 Background chalkboard resource from [the Special Attack community's how-to][how-to], slightly
 modified and optimized for size.
 
 [hugo]: https://gohugo.io/
-[pure.css]: http://purecss.io/
 [how-to]: https://www.specialattack.net/content/how-create-tf2-chalkboard-style-motd-html
 
 ## Usage
@@ -45,7 +44,7 @@ like.
 
 ### Styling
 
-Standard unit of measurement for font sizes is `vmin` (integer percentage representing the
+Preferred unit of measurement for font sizes is `vmin` (integer percentage representing the
 minimum of either viewport width or viewport height), allowing text to scale appropriately with
 window size.
 
@@ -53,20 +52,41 @@ window size.
 
 Any `.motd-link` navigation buttons in the `<footer>` will load the next page's `#main-content`
 and `#motd-buttons` elements, replacing the existing ones without a full page load.
-It uses `.append()` instead of `.load()`, so inline scripts will be executed.
-
-## Options
+It uses `fetch()` and `DOMParser` to grab content.
 
 ### Responsive grid system
 
-By default, Pure.css' responsive grid system is included.  If you happen to not need grid
-capabilities, you can save up to 8KB by setting `grids` to `false` in your site-level
-configuration.
+Use flexbox.  It's well-supported in browsers now, and more importantly, it's supported in the
+embedded web browser that TF2 uses.
+
+If you do need grid support, you'll have to do it yourself.  Here's an example stub for the Pure
+CSS grid system:
+
+```css
+.pure-g {
+	display: flex;
+	flex-flow: wrap;
+}
+
+.pure-u-1 { flex: 0 0 100%; }
+
+@media screen and (min-width: 35.5em) {
+	.pure-u-sm-1-3 { flex: 0 0 33.3333%; }
+	.pure-u-sm-2-3 { flex: 0 0 66.6667%; }
+}
+```
+
+(Note that media queries don't really play nicely in Firefox as of version 55, so navigating
+back to a page that requires response elements doesn't quite work.  See the **Additional header
+content** section below if you're hoping the behavior is consistent across browsers.
+Works fine in Chrome, though.)
+
+## Options
 
 ### Localizations
 
-In case l11n was your kind of thing.  With the [Dynamic MOTD plugin][pl-motd] or similar, you
-can send chalkboard in a user's preferred language.  Follow along with [creating a
+In case l10n was your kind of thing.  With the [Dynamic MOTD plugin][pl-motd] or similar, you
+can send your chalkboard in a user's preferred language.  Follow along with [creating a
 multilingual site][hugo-ml] if you plan on doing so.
 
 Or you can just have the chalkboard localized for your region.  Not everyone can be a polyglot.
@@ -79,14 +99,15 @@ Currently supported locales:
 [pl-motd]: https://forums.alliedmods.net/showthread.php?t=147193
 [hugo-ml]: https://gohugo.io/tutorials/create-a-multilingual-site/
 
-### Alternative references
+### Additional header content
 
-If you're not into letting CDNs handle your stylesheets for whatever reason,
-you can specify alternate references to resources as variables in your configuration file:
+If you absolutely need something extra in the header, create a `header.html` file in your
+project's `layouts/` directory and override the `header_content` block:
 
-* `purecss_ref`:  The main Pure.css stylesheet.  Provided you're using grids, just the base
-stylesheet and the base grid stylesheet is required.  (Default is CloudFlare.)
-* `purecss_grids_ref`:  The Pure.css responsive grid stylesheet. (Default is CloudFlare.)
-* `purecss_oldgrids_ref`:  The Pure.css old-IE responsive grid stylesheet.
-(Defaults to unPKG.)
-* `jquery_ref`:  The jQuery script.  Defaults to jQuery's CDN.
+```
+{{ define "header_content" }}
+	<style>
+	/* ... */
+	</style>
+{{ end }}
+```
