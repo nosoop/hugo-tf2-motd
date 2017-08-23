@@ -94,6 +94,7 @@ p {
 }
 
 /* Sourced from "Align Lists Flush Left" -- https://j.eremy.net/align-lists-flush-left/ */
+/* Enforces use of TF2-styled hyphen for bulleted lists. */
 ul {
 	display: table;
 	margin-left: 0;
@@ -116,30 +117,22 @@ li > strong {
 
 /* sticky footer implementation */
 
-html {
-	position: relative;
-	min-height: 100%;
-}
-
 body {
-	/* Margin bottom by footer height */
-	margin-bottom: 96px;
-	margin-bottom: 13.2vh;
+	/* flexible container that takes up screen height */
+	display: flex;
+	flex-direction: column;
+	height: 100%;
 }
 
 .footer {
-	position: absolute;
-	bottom: 0;
-	width: 100%;
-	/* Set the fixed height of the footer here */
-	height: 96px;
-	height: 13.2vh;
+	/* fixed-height footer */
+	flex: 0 0 13.2vh;
 }
 
 #main-content {
-	/* subtract height of footer from 100% */
+	/* grow content until footer is reached */
 	overflow-y: auto;
-	max-height: 86.8vh;
+	flex: 1;
 }
 
 /* webkit scrollbar */
