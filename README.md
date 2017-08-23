@@ -1,7 +1,7 @@
 # Team Fortress 2 MOTD Theme for Hugo
 
 A [Hugo][hugo] theme to be used in generating message of the day pages for Team Fortress 2.
-Supports inline page transitions, scrolling overflow (default scrollbar), and scaling
+Supports inline page transitions, scrolling overflow (with a custom scrollbar), and scaling
 layouts.
 
 Uses modern HTML5 and JavaScript.  No library dependencies.
@@ -48,6 +48,8 @@ Preferred unit of measurement for font sizes is `vmin` (integer percentage repre
 minimum of either viewport width or viewport height), allowing text to scale appropriately with
 window size.
 
+You can use `<style>` tags inline; they should render just fine.
+
 ### Inline page loading
 
 Any `.motd-link` navigation buttons in the `<footer>` will load the next page's `#main-content`
@@ -60,7 +62,7 @@ Use flexbox.  It's well-supported in browsers now, and more importantly, it's su
 embedded web browser that TF2 uses.
 
 If you do need grid support, you'll have to do it yourself.  Here's an example stub for the Pure
-CSS grid system:
+CSS grid system (one-third and two-third columns):
 
 ```css
 .pure-g {
@@ -78,8 +80,8 @@ CSS grid system:
 
 (Note that media queries don't really play nicely in Firefox as of version 55, so navigating
 back to a page that requires response elements doesn't quite work.  See the **Additional header
-content** section below if you're hoping the behavior is consistent across browsers.
-Works fine in Chrome, though.)
+content** section below if you want consistent behavior across browsers.  Works fine in Chrome,
+though.)
 
 ## Options
 
