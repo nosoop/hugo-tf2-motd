@@ -40,8 +40,8 @@ document.querySelector('footer').addEventListener('click', function (event) {
 	let target = event.target || event.srcElement;
 	
 	do {
-		if (target.getAttribute('href') && target.classList
-				&& target.classList.contains('nav-arrow')) {
+		if (target.classList && target.classList.contains('nav-arrow')
+					&& target.getAttribute('href')) {
 			event.preventDefault();
 			return load_page(target.getAttribute('href'));
 		}
