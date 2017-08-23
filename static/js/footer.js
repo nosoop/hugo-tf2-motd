@@ -40,7 +40,8 @@ document.querySelector('footer').addEventListener('click', function (event) {
 	let target = event.target || event.srcElement;
 	
 	do {
-		if (target.classList.contains('motd-link')) {
+		if (target.getAttribute('href') && target.classList
+				&& target.classList.contains('nav-arrow')) {
 			event.preventDefault();
 			return load_page(target.getAttribute('href'));
 		}

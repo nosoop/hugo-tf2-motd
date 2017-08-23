@@ -6,6 +6,9 @@ layouts.
 
 Uses modern HTML5 and JavaScript.  No library dependencies.
 
+The theme mainly targets a somewhat recent version of Chrome, as that is the web browser engine
+that TF2 uses to render pages.
+
 Background chalkboard resource from [the Special Attack community's how-to][how-to], slightly
 modified and optimized for size.
 
@@ -79,9 +82,9 @@ CSS grid system (one-third and two-third columns):
 ```
 
 (Note that media queries don't really play nicely in Firefox as of version 55, so navigating
-back to a page that requires response elements doesn't quite work.  See the **Additional header
-content** section below if you want consistent behavior across browsers.  Works fine in Chrome,
-though.)
+back to a page that requires responsive elements doesn't quite work.  See the **Additional
+header content** section below if you want consistent behavior across browsers.  Works fine in
+Chrome, though.)
 
 ## Options
 

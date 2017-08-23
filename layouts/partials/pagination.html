@@ -1,20 +1,16 @@
 <div id="motd-buttons" class="navbar-text text-center">
 	{{ if .NextInSection }}
-	<a class="motd-link" href="{{.NextInSection.Permalink}}">
-		<img id="page-previous" src="img/arrow-left.png" class="page-arrow">
-	</a>
+	<a class="nav-arrow" href="{{.NextInSection.Permalink}}">&lt;&lt;</a>
 	{{ else }}
-	<img id="page-previous" src="img/arrow-left.png" class="page-arrow nav-disabled">
+	<span class="nav-arrow nav-disabled">&lt;&lt;</span>
 	{{ end }}
 	
 	<!-- Put navigation label into <span> so it doesn't get thrown out on $().load() -->
 	<span>{{ ( index $.Site.Data.translations $.Site.Params.locale ).panelNavigation }}</span>
 	
 	{{ if .PrevInSection }}
-	<a class="motd-link" href="{{.PrevInSection.Permalink}}">
-		<img id="page-next" src="img/arrow-right.png" class="page-arrow">
-	</a>
+	<a class="nav-arrow" href="{{.PrevInSection.Permalink}}">&gt;&gt;</a>
 	{{ else }}
-	<img id="page-previous" src="img/arrow-right.png" class="page-arrow nav-disabled">
+	<span class="nav-arrow nav-disabled">&gt;&gt;</span>
 	{{ end }}
 </div>
