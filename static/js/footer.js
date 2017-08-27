@@ -5,16 +5,14 @@ const FADE_TIME = .2;
 
 document.querySelector('#main-content').style.transition = `opacity ${FADE_TIME}s`;
 
-let load_page = function (url) {
+let load_page = (url) => {
 	document.querySelector('#main-content').style.opacity = 0;
 	
-	setTimeout(function() {
-		fetch(url).then(function(response) {
-			return response.text();
-		}).then(function (data) {
+	setTimeout(() => {
+		fetch(url).then(response => response.text()).then(data => {
 			let responseDocument = (new DOMParser()).parseFromString(data, "text/html");
 			
-			[ '#main-content' ].forEach(function (selector) {
+			[ '#main-content' ].forEach((selector) => {
 				/* remove children and replace with new ones */
 				let selection = document.querySelector(selector);
 				
@@ -24,7 +22,8 @@ let load_page = function (url) {
 				);
 			});
 			
-			document.querySelector('#motd-buttons').replaceWith(responseDocument.querySelector('#motd-buttons'));
+			document.querySelector('#motd-buttons').replaceWith(
+					responseDocument.querySelector('#motd-buttons'));
 			document.querySelector('#main-content').style.opacity = 1;
 			
 			/* execute inline scripts */
@@ -33,9 +32,9 @@ let load_page = function (url) {
 			window.history.pushState(url, "wew", url);
 		});
 	}, FADE_TIME * 1000);
-}
+};
 
-document.querySelector('footer').addEventListener('click', function (event) {
+document.querySelector('footer').addEventListener('click', event => {
 	let currentEvent = event || window.event;
 	let target = event.target || event.srcElement;
 	
@@ -48,6 +47,6 @@ document.querySelector('footer').addEventListener('click', function (event) {
 	} while (target = target.parentNode);
 });
 
-window.onpopstate = function(event) {
+window.onpopstate = (event) => {
 	load_page(document.location);
 };

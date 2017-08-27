@@ -81,10 +81,10 @@ CSS grid system (one-third and two-third columns):
 }
 ```
 
-(Note that media queries don't really play nicely in Firefox as of version 55, so navigating
-back to a page that requires responsive elements doesn't quite work.  See the **Additional
-header content** section below if you want consistent behavior across browsers.  Works fine in
-Chrome, though.)
+(Note that dynamically loaded pages' media queries don't really play nicely in Firefox as of
+version 55, so navigating back to a page that requires responsive elements doesn't quite work.
+See the **Additional header content** section below if you want to embed the CSS in the head so
+you can get consistent behavior across browsers.  Works fine in Chrome, though.)
 
 ## Options
 
