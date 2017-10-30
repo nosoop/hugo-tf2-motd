@@ -57,15 +57,28 @@ You can use `<style>` tags inline; they should render just fine.
 
 Any `.motd-link` navigation buttons in the `<footer>` will load the next page's `#main-content`
 and `#motd-buttons` elements, replacing the existing ones without a full page load.
-It uses `fetch()` and `DOMParser` to grab content.
+It uses `fetch()` and `DOMParser` to grab content, and inline scripts will be `eval()`'d.
+
+### Scripting
+
+Because of inline script functionality, you may run into trouble attempting to declare variables
+with `let`, as it'll be in the same scope between pages.
+
+Either declare your variables with `var` or enclose your inline script into a closure.
+
+```js
+(() => {
+	/* your code here */
+})();
+```
 
 ### Responsive grid system
 
 Use flexbox.  It's well-supported in browsers now, and more importantly, it's supported in the
 embedded web browser that TF2 uses.
 
-If you do need grid support, you'll have to do it yourself.  Here's an example stub for the Pure
-CSS grid system (one-third and two-third columns):
+As this project used to use Pure.css, here's an example stub for a quick migration from it
+(where the existing page has one-third and two-third columns):
 
 ```css
 .pure-g {
@@ -83,8 +96,8 @@ CSS grid system (one-third and two-third columns):
 
 (Note that dynamically loaded pages' media queries don't really play nicely in Firefox as of
 version 55, so navigating back to a page that requires responsive elements doesn't quite work.
-See the **Additional header content** section below if you want to embed the CSS in the head so
-you can get consistent behavior across browsers.  Works fine in Chrome, though.)
+See the **Additional header content** section below if you want to embed the CSS in the header
+so you can get consistent behavior across browsers.  Works fine in Chrome, though.)
 
 ## Options
 
